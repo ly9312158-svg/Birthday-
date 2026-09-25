@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>كنز جوجو🎀</title>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+Bhaijaan+2:wght@500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--paper:#ffe3ee;--paper2:#ffc9dd;--ink:#7a3b55;--brown:#e691b3;--teal:#ff6fa0;--gold:#ffd166;--red:#ff5c8a;
+  box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+html{height:100%}
+body{margin:0;min-height:100%;font-family:"Baloo Bhaijaan 2",Tahoma,sans-serif;color:var(--ink);position:relative;overflow-x:hidden;
+  background:
+    radial-gradient(circle at 15% 12%,rgba(255,255,255,.9),transparent 30%),
+    radial-gradient(circle at 85% 15%,rgba(255,214,230,.9),transparent 34%),
+    radial-gradient(circle at 20% 85%,rgba(255,201,221,.8),transparent 38%),
+    radial-gradient(circle at 88% 88%,rgba(255,240,246,.9),transparent 36%),
+    radial-gradient(180deg,#fff3f8,#ffd9e8 55%,#ffc2dc)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background-image:radial-gradient(#ffb6d0 2.5px,transparent 2.5px);background-size:34px 34px;opacity:.5}
+.screen,section{position:relative;z-index:1}
+h1,h2,p{margin:0}
+.screen{min-height:100vh;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem;padding:2rem 1.4rem;text-align:center}
+.screen.on{display:flex;animation:fade .5s}
+@keyframes fade{from{opacity:0}}
+.eyebrow{font-size:1rem;color:var(--brown);opacity:.85}
+.title{font-size:2rem;font-weight:800;line-height:1.35;color:var(--red);text-shadow:2px 2px 0 rgba(0,0,0,.08)}
+.btn{background:var(--teal);color:#fff;border:0;border-radius:999px;font:inherit;font-weight:800;font-size:1.1rem;
+  padding:.75rem 1.9rem;box-shadow:0 5px 0 #e2477e;cursor:pointer}
+.btn:active{transform:translateY(4px);box-shadow:0 1px 0 #e2477e}
+.kitty{width:132px;animation:bob 2.2s ease-in-out infinite}
+@keyframes bob{50%{transform:translateY(-8px) rotate(-2deg)}}
+
+/* map screen */
+#map{justify-content:flex-start;padding-top:3rem;gap:0}
+.map-title{font-size:1.3rem;font-weight:800;color:#e2477e;margin-bottom:.3rem}
+.map-hint{font-size:.92rem;color:#e2477e;opacity:.8;margin-bottom:1.2rem}
+.trail{position:relative;width:min(100%,22rem)}
+.trail svg{width:100%;display:block}
+.stop{position:absolute;width:52px;height:52px;margin:-26px;border-radius:50%;background:var(--paper2);
+  border:3px solid var(--brown);display:flex;align-items:center;justify-content:center;font-size:1.4rem;cursor:pointer;
+  box-shadow:0 3px 0 rgba(122,59,85,.25)}
+.stop.open{background:var(--teal);border-color:#e2477e}
+.stop:not(.open){animation:pin 1.8s ease-in-out infinite}
+@keyframes pin{50%{transform:translateY(-5px)}}
+.note{position:fixed;inset:0;background:rgba(74,51,35,.55);display:none;align-items:center;justify-content:center;padding:1.4rem;z-index:5}
+.note.on{display:flex}
+.note-card{background:var(--paper);border:2px solid var(--brown);border-radius:16px;max-width:22rem;padding:1.8rem 1.5rem;
+  box-shadow:0 14px 30px rgba(0,0,0,.3);animation:pop .35s cubic-bezier(.3,1.5,.4,1)}
+@keyframes pop{from{transform:scale(.7);opacity:0}}
+.note-card p{font-size:1.15rem;font-weight:700;line-height:1.8;margin-bottom:1.1rem}
+.note-card button{background:var(--brown);color:#fdf6e3;border:0;border-radius:10px;padding:.5rem 1.4rem;font:inherit;font-weight:700;cursor:pointer}
+.progress{margin-top:1.4rem;font-size:.95rem;color:#e2477e}
+
+/* chest screen */
+#chest{background:linear-gradient(180deg,#ff8fb5,#ff6fa0);color:#fff}
+.box{position:relative;width:180px}
+.box svg{width:100%;overflow:visible}
+.lid{transform-origin:90px 78px;transition:transform .7s cubic-bezier(.3,1.6,.4,1)}
+.box.open .lid{transform:translateY(-30px) rotate(-32deg)}
+.glow{position:absolute;left:50%;top:30%;width:260px;height:260px;margin:-130px 0 0 -130px;border-radius:50%;pointer-events:none;
+  background:radial-gradient(circle,rgba(255,255,255,.65),transparent 65%);opacity:0;transition:opacity .5s}
+.box.open+.glow,.chest-wrap.open .glow{opacity:1}
+.chest-wrap{position:relative;display:flex;align-items:center;justify-content:center}
+.promise{max-width:24rem;background:rgba(255,255,255,.22);border:1px solid rgba(255,255,255,.5);border-radius:18px;
+  padding:1.6rem;font-size:1.15rem;font-weight:700;line-height:2;opacity:0;transform:translateY(10px);transition:opacity .7s,transform .7s}
+.promise .big{display:block;margin-top:.8rem;font-size:1.5rem}
+.promise.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<section class="screen on" id="s0">
+  <svg class="kitty" viewBox="0 0 120 120">
+    <path d="M28 30 L40 8 L52 30Z" fill="#fff" stroke="#e691b3" stroke-width="3" stroke-linejoin="round"/>
+    <path d="M92 30 L80 8 L68 30Z" fill="#fff" stroke="#e691b3" stroke-width="3" stroke-linejoin="round"/>
+    <circle cx="60" cy="62" r="42" fill="#fff" stroke="#e691b3" stroke-width="3"/>
+    <path d="M40 62c0-2 2-3 4-1.5" stroke="#7a3b55" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <path d="M80 62c0-2-2-3-4-1.5" stroke="#7a3b55" stroke-width="3" stroke-linecap="round" fill="none"/>
+    <ellipse cx="60" cy="70" rx="4" ry="3" fill="#ff9dbf"/>
+    <path d="M60 73c-2 3-8 3-10 0M60 73c2 3 8 3 10 0" stroke="#7a3b55" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+    <g stroke="#e691b3" stroke-width="2" stroke-linecap="round">
+      <path d="M20 58h14M20 64h14M20 70h11"/><path d="M100 58H86M100 64H86M100 70h-11"/>
+    </g>
+    <g transform="translate(80,36) rotate(18)">
+      <path d="M0 0 C-14-10 -14 10 0 0 C14-10 14 10 0 0Z" fill="#ff6fa0"/>
+      <circle cx="0" cy="0" r="4" fill="#ffd166"/>
+    </g>
+  </svg>
+  <p class="eyebrow">في مفاجأة تانية مستنياكي</p>
+  <h1 class="title">كنز جوجو🎀</h1>
+  <button class="btn" id="start">يلا بينا نلاقيه 🎀</button>
+</section>
+
+<section class="screen" id="map">
+  <p class="map-title">امشي على الخط ولاقي كل محطة</p>
+  <p class="map-hint">دوسي على كل علامة</p>
+  <div class="trail">
+    <svg viewBox="0 0 320 460">
+      <path d="M40 30 Q280 60 60 150 Q-100 240 260 260 Q420 280 80 380 Q-40 430 160 440"
+        fill="none" stroke="#ff9dbf" stroke-width="3" stroke-dasharray="2 10" stroke-linecap="round"/>
+    </svg>
+    <div class="stop" data-i="1" style="left:12.5%;top:6.5%">1</div>
+    <div class="stop" data-i="2" style="left:19%;top:33%">2</div>
+    <div class="stop" data-i="3" style="left:81%;top:57%">3</div>
+    <div class="stop" data-i="4" style="left:25%;top:83%">4</div>
+    <div class="stop" data-i="5" style="left:50%;top:95.5%">5</div>
+  </div>
+  <p class="progress" id="prog">0 من 5 محطات</p>
+  <button class="btn" id="toChest" style="margin-top:1rem;display:none">لقيتي الهدية! افتحيها 🎁</button>
+</section>
+
+<div class="note" id="noteOverlay">
+  <div class="note-card">
+    <p id="noteText"></p>
+    <button id="noteClose">تمام</button>
+  </div>
+</div>
+
+<section class="screen" id="chest">
+  <div class="chest-wrap" id="chestWrap">
+    <div class="box" id="box">
+      <svg viewBox="0 0 160 150">
+        <rect x="18" y="66" width="124" height="70" rx="10" fill="#fff" stroke="#ff6fa0" stroke-width="3"/>
+        <rect x="70" y="66" width="20" height="70" fill="#ffd166"/>
+        <g class="lid">
+          <rect x="10" y="46" width="140" height="26" rx="8" fill="#ffb6d0" stroke="#ff6fa0" stroke-width="3"/>
+          <rect x="70" y="46" width="20" height="26" fill="#ffd166"/>
+          <path d="M80 46c-8-22-34-18-24 0c5 9 18 6 24 0zM80 46c8-22 34-18 24 0c-5 9-18 6-24 0z" fill="#ff6fa0" stroke="#e2477e" stroke-width="2"/>
+          <circle cx="80" cy="45" r="6" fill="#e2477e"/>
+        </g>
+      </svg>
+    </div>
+    <i class="glow"></i>
+  </div>
+  <div class="promise" id="promise">
+    يا جوجو هفضل جنبك في كل خطوة جاية، في فرحتك وفي تعبك، النهارده وبكرة وكل سنة جاية. كنزي الحقيقي إنك إنتي موجودة.
+    <span class="big">بحبككك أوييي يا بنوتي ❤️</span>
+  </div>
+</section>
+
+<script>
+(function(){
+  var $=function(id){return document.getElementById(id)};
+  function show(id){document.querySelectorAll('.screen').forEach(function(s){s.classList.toggle('on',s.id===id)})}
+  $('start').onclick=function(){show('map')};
+
+  var notes={1:'عايزك بكل تفاصيلك ومهما حصل أي حالتك',2:'مش ببقى مبسوط غير معاكي',3:'ببقى أنا فعلاً معاكي بس',4:'حنية الدنيا فيكي',5:'أحلى وأجمل إنسان في حياة يويو 👈🏻👉🏻'};
+  var opened=0,total=Object.keys(notes).length;
+  document.querySelectorAll('.stop').forEach(function(st){
+    st.onclick=function(){
+      if(st.classList.contains('open'))return;
+      st.classList.add('open'); opened++;
+      $('noteText').textContent=notes[st.dataset.i];
+      $('noteOverlay').classList.add('on');
+      $('prog').textContent=opened+' من '+total+' محطات';
+      if(opened===total) $('toChest').style.display='inline-block';
+    };
+  });
+  $('noteClose').onclick=function(){$('noteOverlay').classList.remove('on')};
+  $('toChest').onclick=function(){show('chest')};
+  $('box').onclick=function(){
+    if(this.classList.contains('open'))return;
+    this.classList.add('open');
+    setTimeout(function(){$('promise').classList.add('in')},500);
+  };
+})();
+</script>
+</body>
+</html>
